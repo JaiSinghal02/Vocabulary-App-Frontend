@@ -1,6 +1,9 @@
 .cards-container{
-    width:99%;
+    width: calc(99% + 6px);
     height:auto;
     top:84px;
     position: absolute;
+}
+.cards-container:hover{
+    cursor: pointer;
 }

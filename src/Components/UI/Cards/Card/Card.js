@@ -8,12 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+    minWidth: 200,
   },
   title: {
     fontSize: 14,
@@ -23,12 +18,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Cardd() {
+export default function Cardd(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.root} variant="outlined">
+    <Card className={classes.root} variant="outlined" onClick={(e)=>props.openCard(e)}>
       <CardContent>
         <Typography variant="h5" component="h2">
           Word here
