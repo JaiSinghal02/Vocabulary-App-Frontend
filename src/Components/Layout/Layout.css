@@ -1,0 +1,15 @@
+
+
+.layout-paper{
+    width: 97%;
+    height: 30px;
+    position: fixed;
+    top:52px;
+    border-radius:10px 10px 0 0;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 40px;
+    padding-top: 4px;
+    font-size: 18px;
+    z-index: 10;
+}
