@@ -32,7 +32,6 @@ export default function WordInfo(props){
       </React.Fragment>
     )
   }
-  console.log("WPRDINFO",props.data)
     let content=props.data["lexicalEntries"].map((obj1,ind)=>{
         return(
           <React.Fragment key={ind+1000}> 

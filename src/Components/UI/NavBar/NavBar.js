@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function NavBar() {
+export default function NavBar(props) {
     const classes = useStyles();
     const [isSearchBar, toggleSearchBar] = useState(false)
     const [searchBarWidth, setSearchBarWidth] = useState('0')
@@ -77,10 +77,12 @@ export default function NavBar() {
     const showSearchBar = () => {
         toggleSearchBar(prev => !prev)
         setSearchBarWidth('100%')
+        props.isSearching()
     }
     const hideSearchBar = () => {
         toggleSearchBar(prev => !prev)
         setSearchBarWidth('0')
+        props.isNotSearching()
     }
     let searchBar = null;
     let head = <div>
@@ -92,12 +94,14 @@ export default function NavBar() {
     let close=null;
     if (isSearchBar) {
         searchBar = <InputBase
-            autoFocus="true"
+            autoFocus={true}
             classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
             }}
             inputProps={{ 'aria-label': 'search' }}
+            onChange={(e)=>props.searchBarQuery(e)}
+            placeholder="Search"
         />
         head = null
         close=<CloseIcon onClick={hideSearchBar} className={classes.closeButton}/>

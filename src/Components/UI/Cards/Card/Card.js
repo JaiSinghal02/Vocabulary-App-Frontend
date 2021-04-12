@@ -1,9 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
@@ -37,7 +35,7 @@ export default function Cardd(props) {
   const info=props.data.lexicalEntries.map((entry,ind)=>{
     return(
       <Typography key={ind} variant="body2" component="p" className={classes.wordInfo}>
-          ({entry["lexicalCategory"]["id"]}) {entry["entries"][0]["senses"][0]["definitions"]}
+          ({entry["lexicalCategory"]["id"]}) {entry["entries"]?entry["entries"][0]["senses"][0]["definitions"]:""}
       </Typography>
     )
   })

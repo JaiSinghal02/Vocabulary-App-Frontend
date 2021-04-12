@@ -8,8 +8,8 @@ import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
 import Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { green } from '@material-ui/core/colors';
 import WordInfo from '../../WordInfo/WordInfo'
+import axios from 'axios'
 import './Modal.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -17,13 +17,30 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    height: '100%',
+    overflowY: 'scroll'
   },
-  paper: {
+  paper1: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 2, 0.5),
-    overflowY: 'scroll',
+  },
+  paper2: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 2, 0.5),
+    width: '100%',
+    minHeight: '5000px',
+    overflowY: 'auto'
+  },
+  infoHead:{
+    backgroundColor: 'white',
+    position: 'fixed',
+    width:'97%',
+    top: '0',
+    zIndex:'1',
   },
   closeModalIcon:{
       position: 'fixed',
@@ -34,10 +51,11 @@ const useStyles = makeStyles((theme) => ({
   },
   wordInfoHead:{
       marginTop: '50px',
-      marginBottom: '0  '
+      marginBottom: '0',
+      fontSize: '40px'
   },
   buttonProgress: {
-    color: green[500],
+    color: "primary",
     position: 'absolute',
     marginTop: '14px',
     marginRight: '19px',
@@ -47,15 +65,31 @@ const useStyles = makeStyles((theme) => ({
 export default function Modaal(props) {
   const classes = useStyles();
   const [loading,setLoading]=useState(false)
+  const [newWord,setNewWord]=useState("")
   let modalContent=null
 const addButtonClick = ()=>{
     setLoading(!loading)
+    
+    axios.post(`/dictionary/add/word/${newWord}`)
+    .then(res=>{
+      setLoading(!loading)
+      props.closeModal(newWord)
+    })
+    .catch(err=>{
+      setLoading(!loading)
+      props.closeModal("error",err.message)
+    })
 }
   
   if(props.addModal){
-    modalContent=<div className={classes.paper} style={{height: props.modalHeight,width: props.modalWidth}}>
+    modalContent=<div className={classes.paper1} style={{height: props.modalHeight,width: props.modalWidth}}>
                     <h3 id="transition-modal-title">Add to Dictionary</h3>
-                    <TextField autoFocus="true" id="standard-required" label="New Word" defaultValue="" InputLabelProps={{shrink: true,}} />
+                    <TextField autoFocus={true} id="standard-required" label="New Word" 
+                    onChange={(e)=>setNewWord(e.target.value)}
+                    defaultValue="" 
+                    InputLabelProps={{shrink: true,}}
+                    autoComplete="off"
+                    />
                     <div className="add-modal-button">
                         <Button color="primary" onClick={addButtonClick} disabled={loading}>Add</Button>
                         {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
@@ -64,21 +98,26 @@ const addButtonClick = ()=>{
                 </div>
     }
 else if(props.wordModal){
-    modalContent=<div className={classes.paper} style={{height: props.modalHeight,width: props.modalWidth}}>
+    modalContent=<div className={classes.paper2} >
+              <div className={classes.infoHead}>
                 <CloseIcon onClick={props.closeModal} className={classes.closeModalIcon} />
             <h1 id="transition-modal-title" className={classes.wordInfoHead}>{props.data["_id"]}</h1>
             <div style={{width: '100%', height: '3px',display: 'block'}}>
             <Divider style={{display: 'flex'}} light />
             </div>
-            <div className="word-info-modal-content">
+            </div>
+            <div style={{position: 'absolute',top: '110px',width: '97%'}}>
+
+            <div style={{width:'98%'}}>
               <WordInfo data={props.data}/>
+            </div>
             </div>
 </div>
 }
 
 
   return (
-    <div className="Just chill">
+    <div style={{width:'100%',overflowY: 'auto'}}>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

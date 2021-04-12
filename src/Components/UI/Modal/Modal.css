@@ -7,3 +7,6 @@
     flex-direction: row-reverse;
     justify-content: flex-start;
 }
+.modal-cont{
+    background-color: black;
+}
