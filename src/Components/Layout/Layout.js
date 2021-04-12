@@ -15,8 +15,8 @@ export default function Layout(props){
         <Divider id="layout-paper-divider" light />
         <Cards/>
         <div className="layout-add-icon">
-        <Fab size="small" color="secondary" aria-label="add" >
-          <AddIcon onClick={props.openModal} />
+        <Fab size="small" color="secondary" aria-label="add" onClick={props.openModal}  >
+          <AddIcon />
         </Fab>
         </div>
         </>

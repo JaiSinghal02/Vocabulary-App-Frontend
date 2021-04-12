@@ -9,6 +9,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { green } from '@material-ui/core/colors';
+import WordInfo from '../../WordInfo/WordInfo'
 import './Modal.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 0.5),
+    padding: theme.spacing(2, 2, 0.5),
+    overflowY: 'scroll',
   },
   closeModalIcon:{
       position: 'fixed',
@@ -63,13 +65,14 @@ const addButtonClick = ()=>{
     }
 else if(props.wordModal){
     modalContent=<div className={classes.paper} style={{height: props.modalHeight,width: props.modalWidth}}>
-        <CloseIcon onClick={props.closeModal} className={classes.closeModalIcon} />
-    <h1 id="transition-modal-title" className={classes.wordInfoHead}>Word</h1>
-    <div style={{width: '100%', height: '3px',display: 'block'}}>
-    <Divider style={{display: 'flex'}} light />
-    </div>
-    <div className="add-modal-button">
-    </div>
+                <CloseIcon onClick={props.closeModal} className={classes.closeModalIcon} />
+            <h1 id="transition-modal-title" className={classes.wordInfoHead}>{props.data["_id"]}</h1>
+            <div style={{width: '100%', height: '3px',display: 'block'}}>
+            <Divider style={{display: 'flex'}} light />
+            </div>
+            <div className="word-info-modal-content">
+              <WordInfo data={props.data}/>
+            </div>
 </div>
 }
 

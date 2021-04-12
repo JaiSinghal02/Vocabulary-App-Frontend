@@ -1,0 +1,20 @@
+.word-info-modal-word,.word-info-modal-etymology{
+    margin: 2px;
+}
+.word-info-modal-etymology{
+    color:#919191;
+    font-size: 14px;
+}
+.word-info-modal-first-word{
+    font-style: italic;
+    color:#919191;
+}
+.word-info-modal-definition{
+    margin-bottom: 4px;
+    margin-top: 13px;
+}
+.word-info-modal-example-list{
+    margin-top: 4px;
+    padding-inline-start: 30px;
+    margin-bottom: 15px;
+}

@@ -11,27 +11,43 @@ const useStyles = makeStyles({
     minWidth: 200,
   },
   title: {
-    fontSize: 14,
+    fontSize: 10,
   },
   pos: {
     marginBottom: 12,
   },
+  content:{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    fontSize: '20px'
+  },
+  wordInfo:{
+    width:'100%',
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    textAlign: 'left',
+    fontSize: '15px'
+  }
 });
 
 export default function Cardd(props) {
   const classes = useStyles();
-
+  const info=props.data.lexicalEntries.map((entry,ind)=>{
+    return(
+      <Typography key={ind} variant="body2" component="p" className={classes.wordInfo}>
+          ({entry["lexicalCategory"]["id"]}) {entry["entries"][0]["senses"][0]["definitions"]}
+      </Typography>
+    )
+  })
   return (
-    <Card className={classes.root} variant="outlined" onClick={(e)=>props.openCard(e)}>
-      <CardContent>
-        <Typography variant="h5" component="h2">
-          Word here
+    <Card className={classes.root} variant="outlined" onClick={props.openCard(props.data["_id"])}>
+      <CardContent className={classes.content}>
+        <Typography variant="h5" component="h2" >
+          {props.data["_id"]}
         </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+        {info}
       </CardContent>
     </Card>
   );
