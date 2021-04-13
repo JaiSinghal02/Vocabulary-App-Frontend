@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Vocabulary-App-Frontend/static/css/main.e00ffddb.chunk.css",
-    "main.js": "/Vocabulary-App-Frontend/static/js/main.2032f2b5.chunk.js",
-    "main.js.map": "/Vocabulary-App-Frontend/static/js/main.2032f2b5.chunk.js.map",
+    "main.js": "/Vocabulary-App-Frontend/static/js/main.03d74eb8.chunk.js",
+    "main.js.map": "/Vocabulary-App-Frontend/static/js/main.03d74eb8.chunk.js.map",
     "runtime-main.js": "/Vocabulary-App-Frontend/static/js/runtime-main.9cbd9fd9.js",
     "runtime-main.js.map": "/Vocabulary-App-Frontend/static/js/runtime-main.9cbd9fd9.js.map",
     "static/js/2.ba5ff2c2.chunk.js": "/Vocabulary-App-Frontend/static/js/2.ba5ff2c2.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.9cbd9fd9.js",
     "static/js/2.ba5ff2c2.chunk.js",
     "static/css/main.e00ffddb.chunk.css",
-    "static/js/main.2032f2b5.chunk.js"
+    "static/js/main.03d74eb8.chunk.js"
   ]
 }
