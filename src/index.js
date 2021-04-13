@@ -16,9 +16,6 @@ const theme = createMuiTheme({
       // contrastText: will be calculated to contrast with palette.primary.main
     },
   },
-  status: {
-    danger: '#622449',
-  },
   typography: {
     fontFamily: [
       'Kumbh Sans', 'sans-serif'
