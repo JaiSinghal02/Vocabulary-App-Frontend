@@ -5,7 +5,7 @@ import App from './App';
 import axios from 'axios'
 import { createMuiTheme,ThemeProvider } from '@material-ui/core/styles';
 
-axios.defaults.baseURL="http://localhost:5000/"
+axios.defaults.baseURL="https://vocabulary-server.herokuapp.com/"
 
 const theme = createMuiTheme({
   palette: {
